@@ -1,3 +1,5 @@
+"use strict";
+
 const images = [
   {
     url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
@@ -12,3 +14,23 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+// Scrieți un script care creează o galerie de imagini pe baza unei matrice cu date. HTML-ul are o listă ul.gallery.
+// Folosiți matricea de obiecte images, pentru a crea elementele <img> imbricate în <li>. Pentru a crea marcajul, vor fi de mare ajutor template strings și metoda insertAdjacentHTML().
+// Toate elementele galeriei trebuie adăugate la DOM dintr-o singură operație.
+// Adăugați un stil minim de poziționare a galeriei (flexbox sau grid) prin intermediul claselor CSS.
+
+const gallery = document.querySelector(".gallery");
+
+const galleryItems = images
+  .map(
+    (image) => `
+    <li>
+      <img src="${image.url}" alt="${image.alt}" class="gallery-image">
+    </li>
+  `
+  )
+  .join("");
+
+gallery.insertAdjacentHTML("beforeend", galleryItems);
+
